@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:malab/core/utiles/size_cofig.dart';
 
-abstract class AppStyles {
+class AppStyles {
   static TextStyle f24600(context) {
     return TextStyle(
         fontSize: getResponsiveFontSize(context, fontSize: 24),
