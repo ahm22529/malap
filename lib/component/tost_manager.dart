@@ -9,7 +9,7 @@ class ToastManager {
 
     _overlayEntry = OverlayEntry(
       builder: (context) => Positioned(
-        top: MediaQuery.of(context).viewPadding.top + 20,
+        top: MediaQuery.of(context).viewPadding.top + 50,
         left: 20,
         right: 20,
         child: Material(

@@ -5,12 +5,16 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:malab/core/error/custom_exception.dart';
 import 'package:malab/core/error/fauiler.dart';
+import 'package:malab/core/services/fcm/fcm_services.dart';
 import 'package:malab/core/services/fire_base_auth_services/fire_base_aut_ser.dart';
+import 'package:malab/core/services/fire_base_storge.dart/fire_base_storage.dart';
+import 'package:malab/core/utiles/end_point.dart';
 import 'package:malab/fetures/auth/domin/entity/user_entity.dart';
 import 'package:malab/fetures/auth/domin/repo/auth_repo.dart';
 
 class AuthRepoImp extends AuthRepo {
   FireBaseAutSer fireBaseAutSer = FireBaseAutSer();
+  final FireStoreService fireBaseStorage = FireStoreService();
   @override
   Future<Either<Failure, String>> sendcode(
       BuildContext context, String phoneNumber) async {
@@ -55,10 +59,11 @@ class AuthRepoImp extends AuthRepo {
       user = await fireBaseAutSer.createUserWithEmailAndPassword(
           email: email, password: password);
       var userEntity = UserEntity(
-        name: name,
-        email: email,
-        uId: user.uid,
-      );
+          name: name,
+          email: email,
+          uId: user.uid,
+          fcmToken: FCMService().token ?? "");
+      addUser(userEntity: userEntity);
 
       return right(userEntity);
     } on CustomException catch (e) {
@@ -81,6 +86,12 @@ class AuthRepoImp extends AuthRepo {
     try {
       var user = await fireBaseAutSer.signInWithEmailAndPassword(
           email: email, password: password);
+      addUser(
+          userEntity: UserEntity(
+              name: user.displayName ?? "",
+              email: email,
+              uId: user.uid,
+              fcmToken: FCMService().token ?? ""));
 
       return right(UserEntity(
           name: user.displayName ?? '', email: email, uId: user.uid));
@@ -96,5 +107,18 @@ class AuthRepoImp extends AuthRepo {
         ),
       );
     }
+  }
+
+  @override
+  Future addUser({required UserEntity userEntity}) async {
+    await fireBaseStorage.addData(
+        path: EndPoint.addUser, data: userEntity.toMap());
+    print("object");
+  }
+
+  @override
+  Future<Either<Failure, UserEntity>> getUserData() {
+    // TODO: implement getUserData
+    throw UnimplementedError();
   }
 }

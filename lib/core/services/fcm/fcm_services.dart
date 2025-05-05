@@ -6,13 +6,13 @@ import 'package:malab/fetures/auth/prsention/view/screen/log_in_screen.dart';
 
 class FCMService {
   FirebaseMessaging messaging = FirebaseMessaging.instance;
-
+ String? token = '';
   Future<void> init() async {
     // طلب الأذونات لإرسال الإشعارات
     await messaging.requestPermission();
 
     // الحصول على التوكن (المعرف الفريد للجهاز)
-    String? token = await messaging.getToken();
+  token = await messaging.getToken();
     print("FCM Token: $token");
 
     // مستمع للإشعارات عند تلقيها عندما يكون التطبيق في المقدمة

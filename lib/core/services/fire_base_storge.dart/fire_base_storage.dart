@@ -1,40 +1,51 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:malab/core/error/custom_exception.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:malab/core/services/fire_base_storge.dart/data_base_services.dart';
 
-class FireBaseStorage {
+
+class FireStoreService implements DatabaseService {
   FirebaseFirestore firestore = FirebaseFirestore.instance;
-  CollectionReference users = FirebaseFirestore.instance.collection('users');
-  FirebaseAuth auth = FirebaseAuth.instance;
-
-  Future<void> addUser({
-    required String fulName,
-    required String fcm,
-  }) async {
-    try {
-      await users.add({
-        'full_name': fulName,
-        'fcm': fcm,
-      }).then((value) => print("User Added"));
-    } catch (e) {
-      print("Failed to add user: $e");
-      throw CustomException(message: "حدث خطأ أثناء إضافة المستخدم: $e");
+  @override
+  Future<void> addData(
+      {required String path,
+      required Map<String, dynamic> data,
+      String? documentId}) async {
+    if (documentId != null) {
+      firestore.collection(path).doc(documentId).set(data);
+    } else {
+      await firestore.collection(path).add(data);
     }
   }
 
-  Future<DocumentSnapshot> getUserData() async {
-    try {
-      User? currentUser = auth.currentUser; 
-      if (currentUser != null) {
-        DocumentSnapshot userData =
-            await users.doc(currentUser.uid).get(); 
-        return userData;
-      } else {
-        throw CustomException(message: "لم يتم العثور على المستخدم");
+  @override
+  Future<dynamic> getData(
+      {required String path,
+      String? docuementId,
+      Map<String, dynamic>? query}) async {
+    if (docuementId != null) {
+      var data = await firestore.collection(path).doc(docuementId).get();
+      return data.data();
+    } else {
+      Query<Map<String, dynamic>> data = firestore.collection(path);
+      if (query != null) {
+        if (query['orderBy'] != null) {
+          var orderByField = query['orderBy'];
+          var descending = query['descending'];
+          data = data.orderBy(orderByField, descending: descending);
+        }
+        if (query['limit'] != null) {
+          var limit = query['limit'];
+          data = data.limit(limit);
+        }
       }
-    } catch (e) {
-      print("Failed to get user data: $e");
-      throw CustomException(message: "حدث خطأ أثناء استرجاع البيانات");
+      var result = await data.get();
+      return result.docs.map((e) => e.data()).toList();
     }
+  }
+
+  @override
+  Future<bool> checkIfDataExists(
+      {required String path, required String docuementId}) async {
+    var data = await firestore.collection(path).doc(docuementId).get();
+    return data.exists;
   }
 }
