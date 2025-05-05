@@ -5,12 +5,10 @@ import 'package:malab/core/error/custom_exception.dart';
 
 class FireBaseAutSer {
   final FirebaseAuth auth = FirebaseAuth.instance;
-
+  String verificationId = '';
   Future<String> sendCode(
       {required String phoneNumber, required BuildContext context}) async {
     try {
-      String verificationId = '';
-
       await auth.verifyPhoneNumber(
         phoneNumber: phoneNumber,
         timeout: const Duration(seconds: 60),

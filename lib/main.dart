@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:malab/core/services/fcm/fcm_services.dart';
 import 'package:malab/core/utiles/global_key.dart';
+import 'package:malab/fetures/auth/prsention/view/screen/sing_up_screen.dart';
 
 import 'package:malab/fetures/splash/presention/view/screen/splash_screen.dart';
 
@@ -34,7 +35,7 @@ class Malab extends StatelessWidget {
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
       ],
-      home: const SplashScreen(),
+      home: const SingUpScreen(),
     );
   }
 }
