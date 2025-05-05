@@ -7,8 +7,8 @@ import 'package:malab/fetures/auth/prsention/view/screen/sing_up_screen.dart';
 
 import 'package:malab/fetures/splash/presention/view/screen/splash_screen.dart';
 
-void main()async {
-    WidgetsFlutterBinding.ensureInitialized();
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   FCMService().init();
 
