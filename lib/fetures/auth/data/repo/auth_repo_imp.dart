@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:get_it/get_it.dart';
 import 'package:malab/core/error/custom_exception.dart';
 import 'package:malab/core/error/fauiler.dart';
 import 'package:malab/core/services/fcm/fcm_services.dart';
@@ -15,7 +16,6 @@ import 'package:malab/fetures/auth/domin/repo/auth_repo.dart';
 class AuthRepoImp extends AuthRepo {
   FireBaseAutSer fireBaseAutSer = FireBaseAutSer();
   final FireStoreService fireBaseStorage = FireStoreService();
-  
 
   @override
   Future<Either<Failure, UserEntity>> createUserWithEmailAndPassword(
@@ -28,7 +28,7 @@ class AuthRepoImp extends AuthRepo {
           name: name,
           email: email,
           uId: user.uid,
-          fcmToken: FCMService().token ?? "");
+          fcmToken: GetIt.instance<FCMService>().token ?? "");
       addUser(userEntity: userEntity);
 
       return right(userEntity);
@@ -52,12 +52,6 @@ class AuthRepoImp extends AuthRepo {
     try {
       var user = await fireBaseAutSer.signInWithEmailAndPassword(
           email: email, password: password);
-      addUser(
-          userEntity: UserEntity(
-              name: user.displayName ?? "",
-              email: email,
-              uId: user.uid,
-              fcmToken: FCMService().token ?? ""));
 
       return right(UserEntity(
           name: user.displayName ?? '', email: email, uId: user.uid));

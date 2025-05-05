@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get_it/get_it.dart';
 import 'package:malab/core/services/fcm/fcm_services.dart';
 import 'package:malab/core/services/fire_base_auth_services/fire_base_aut_ser.dart';

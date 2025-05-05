@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get_it/get_it.dart';
 import 'package:malab/component/custom_back_buttom.dart';
 import 'package:malab/component/custom_button.dart';
 import 'package:malab/component/text_builder.dart';
+import 'package:malab/core/services/fcm/fcm_services.dart';
 import 'package:malab/core/utiles/app_color.dart';
 import 'package:malab/core/utiles/app_styel.dart';
 import 'package:malab/fetures/auth/prsention/manager/sing_up_cuibt/sing_up_cubit.dart';
@@ -95,7 +97,10 @@ class SingUpScreen extends StatelessWidget {
                                   .copyWith(color: Colors.black, fontSize: 16),
                             ),
                             TextButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                print(GetIt.instance<FCMService>().token ??
+                                    "null");
+                              },
                               child: Text(
                                 "تسجيل الدخول",
                                 style: AppStyles.f24600(context).copyWith(
