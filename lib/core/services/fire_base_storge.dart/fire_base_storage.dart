@@ -24,10 +24,10 @@ class FireBaseStorage {
 
   Future<DocumentSnapshot> getUserData() async {
     try {
-      User? currentUser = auth.currentUser; // الحصول على المستخدم الحالي
+      User? currentUser = auth.currentUser; 
       if (currentUser != null) {
         DocumentSnapshot userData =
-            await users.doc(currentUser.uid).get(); // استرجاع البيانات
+            await users.doc(currentUser.uid).get(); 
         return userData;
       } else {
         throw CustomException(message: "لم يتم العثور على المستخدم");

@@ -1,9 +1,16 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:malab/core/services/fcm/fcm_services.dart';
+import 'package:malab/core/utiles/global_key.dart';
 
 import 'package:malab/fetures/splash/presention/view/screen/splash_screen.dart';
 
-void main() {
+void main()async {
+    WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  FCMService().init();
+
   runApp(const Malab());
 }
 
@@ -21,6 +28,7 @@ class Malab extends StatelessWidget {
       supportedLocales: const [
         Locale("ar"),
       ],
+      navigatorKey: GlobalKeys.navigatorKey,
       localizationsDelegates: const [
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
