@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:malab/fetures/auth/prsention/view/screen/log_in_screen.dart';
-import 'package:malab/fetures/auth/prsention/view/screen/sing_up_screen.dart';
-import 'package:malab/fetures/auth/prsention/view/screen/verify_screen.dart';
+
+import 'package:malab/fetures/splash/presention/view/screen/splash_screen.dart';
 
 void main() {
   runApp(const Malab());
@@ -27,7 +26,7 @@ class Malab extends StatelessWidget {
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
       ],
-      home: const VerifyScreen(),
+      home: const SplashScreen(),
     );
   }
 }

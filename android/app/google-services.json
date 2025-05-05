@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1021672382316",
+    "project_id": "malab-77af4",
+    "storage_bucket": "malab-77af4.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1021672382316:android:566e12dcd1cec2e805dd49",
+        "android_client_info": {
+          "package_name": "com.example.malab"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB4yK4_kUXPK-oY9D7iettWM-OIQdo16Ws"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
