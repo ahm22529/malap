@@ -15,41 +15,7 @@ import 'package:malab/fetures/auth/domin/repo/auth_repo.dart';
 class AuthRepoImp extends AuthRepo {
   FireBaseAutSer fireBaseAutSer = FireBaseAutSer();
   final FireStoreService fireBaseStorage = FireStoreService();
-  @override
-  Future<Either<Failure, String>> sendcode(
-      BuildContext context, String phoneNumber) async {
-    try {
-      var res = await fireBaseAutSer.sendCode(
-          phoneNumber: phoneNumber, context: context);
-      return right(res);
-    } on CustomException catch (e) {
-      return left(ServerFailure(e.message));
-    }
-  }
-
-  @override
-  Future<Either<Failure, UserEntity>> verifyAccount(
-      String smsCode, BuildContext context) async {
-    try {
-      final user = await fireBaseAutSer.verifyCode(
-        verificationId: fireBaseAutSer.verificationId,
-        smsCode: smsCode,
-        context: context,
-      );
-
-      final userEntity = UserEntity(
-        uId: user.uid,
-        name: user.displayName ?? '',
-        email: user.phoneNumber ?? '',
-      );
-
-      return right(userEntity);
-    } on CustomException catch (e) {
-      return left(ServerFailure(e.message));
-    } catch (e) {
-      return left(ServerFailure(e.toString()));
-    }
-  }
+  
 
   @override
   Future<Either<Failure, UserEntity>> createUserWithEmailAndPassword(
