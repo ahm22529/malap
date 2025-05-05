@@ -8,6 +8,19 @@ class AppStyles {
         fontWeight: FontWeight.w600,
         color: Colors.white);
   }
+
+  static TextStyle f19700(context) {
+    return TextStyle(
+        fontSize: getResponsiveFontSize(context, fontSize: 19),
+        fontWeight: FontWeight.w700,
+        color: Colors.white);
+  }
+   static TextStyle f13700(context) {
+    return TextStyle(
+        fontSize: getResponsiveFontSize(context, fontSize: 13),
+        fontWeight: FontWeight.w700,
+        color: Colors.white);
+  }
 }
 
 // sacleFactor

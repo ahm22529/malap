@@ -35,7 +35,7 @@ class Malab extends StatelessWidget {
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
       ],
-      home: const SingUpScreen(),
+      home: const SplashScreen(),
     );
   }
 }

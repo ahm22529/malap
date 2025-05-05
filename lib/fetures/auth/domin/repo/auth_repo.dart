@@ -8,4 +8,11 @@ abstract class AuthRepo {
       BuildContext context, String phoneNumber);
   Future<Either<Failure, UserEntity>> verifyAccount(
       String smsCode, BuildContext context);
+        Future<Either<Failure, UserEntity>> createUserWithEmailAndPassword(
+      String email, String password, String name);
+
+  Future<Either<Failure, UserEntity>> signinWithEmailAndPassword(
+      String email, String password);
+
+
 }

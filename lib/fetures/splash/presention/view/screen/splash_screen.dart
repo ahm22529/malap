@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
+import 'package:malab/fetures/auth/prsention/view/screen/sing_up_screen.dart';
 import 'package:malab/fetures/onbording/presenention/view/screen/onbording_screen.dart';
 
 class SplashScreen extends StatelessWidget {
@@ -16,8 +17,7 @@ class SplashScreen extends StatelessWidget {
             Future.delayed(composition.duration, () {
               Navigator.pushReplacement(
                 context,
-                MaterialPageRoute(
-                    builder: (context) => const OnbordingScreen()),
+                MaterialPageRoute(builder: (context) => const SingUpScreen()),
               );
             });
           },
