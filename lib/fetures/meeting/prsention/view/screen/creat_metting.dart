@@ -6,9 +6,8 @@ import 'package:malab/component/custom_image_handler.dart';
 import 'package:malab/component/text_builder.dart';
 import 'package:malab/core/utiles/app_images.dart';
 import 'package:malab/core/utiles/app_styel.dart';
-import 'package:malab/fetures/meeting/data/model/live_user_model.dart';
 import 'package:malab/fetures/meeting/prsention/manager/cubit/meeting_cubit.dart';
-import 'package:malab/fetures/meeting/prsention/view/screen/Live_stream.dart';
+import 'package:malab/fetures/meeting/prsention/view/screen/Live_stream%20copy.dart';
 
 class CreatMetting extends StatelessWidget {
   const CreatMetting({super.key});

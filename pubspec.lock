@@ -1042,6 +1042,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.13.15"
+  zego_zim:
+    dependency: "direct main"
+    description:
+      name: zego_zim
+      sha256: "7149128e7666e568ba9f1d1dfd154f404e889995962c46f35c11a26562dde397"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.20.0+1"
   zego_zpns:
     dependency: transitive
     description:
