@@ -1011,7 +1011,7 @@ packages:
     source: hosted
     version: "1.0.0+5"
   zego_express_engine:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: zego_express_engine
       sha256: "2edd207f5299e5dcfa44c7b4e8d2088e718bab81d96bdc6b78a7649adaac1361"
