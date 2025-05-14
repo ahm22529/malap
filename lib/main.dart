@@ -5,7 +5,6 @@ import 'package:malab/core/services/fcm/aswom_notifaxtion.dart';
 import 'package:malab/core/services/fcm/fcm_services.dart';
 import 'package:malab/core/services/get_it/get_it_services.dart';
 import 'package:malab/core/utiles/global_key.dart';
-import 'package:malab/fetures/meeting/prsention/view/screen/creat_metting.dart';
 
 import 'package:malab/fetures/splash/presention/view/screen/splash_screen.dart';
 
@@ -39,7 +38,7 @@ class Malab extends StatelessWidget {
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
       ],
-      home: const CreatMetting(),
+      home: const SplashScreen(),
     );
   }
 }
