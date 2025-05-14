@@ -9,5 +9,5 @@ final getIt = GetIt.instance;
 void setupGetit() {
   getIt.registerSingleton<FireBaseAutSer>(FireBaseAutSer());
   getIt.registerSingleton<DatabaseService>(FireStoreService());
-  getIt.registerSingleton<FCMService>(FCMService());
+  // getIt.registerSingleton<FCMService>(FCMService());
 }

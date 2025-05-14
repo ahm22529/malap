@@ -24,11 +24,8 @@ class AuthRepoImp extends AuthRepo {
     try {
       user = await fireBaseAutSer.createUserWithEmailAndPassword(
           email: email, password: password);
-      var userEntity = UserEntity(
-          name: name,
-          email: email,
-          uId: user.uid,
-          fcmToken: GetIt.instance<FCMService>().token ?? "");
+      var userEntity =
+          UserEntity(name: name, email: email, uId: user.uid, fcmToken: "");
       addUser(userEntity: userEntity);
 
       return right(userEntity);

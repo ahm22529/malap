@@ -97,10 +97,7 @@ class SingUpScreen extends StatelessWidget {
                                   .copyWith(color: Colors.black, fontSize: 16),
                             ),
                             TextButton(
-                              onPressed: () {
-                                print(GetIt.instance<FCMService>().token ??
-                                    "null");
-                              },
+                              onPressed: () {},
                               child: Text(
                                 "تسجيل الدخول",
                                 style: AppStyles.f24600(context).copyWith(
